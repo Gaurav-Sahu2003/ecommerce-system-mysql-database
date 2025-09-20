@@ -1,0 +1,96 @@
+Table Users {
+  user_id int [pk]
+  name varchar
+  email varchar [unique]
+  password_hash varchar
+  role enum('Customer','Admin','Seller')
+  address text
+  wallet_balance decimal
+}
+
+Table Categories {
+  category_id int [pk]
+  name varchar
+  parent_category_id int [ref: > Categories.category_id]
+}
+
+Table Products {
+  product_id int [pk]
+  name varchar
+  description text
+  price decimal
+  stock int
+  category_id int [ref: > Categories.category_id]
+  seller_id int [ref: > Users.user_id]
+}
+
+Table Orders {
+  order_id int [pk]
+  user_id int [ref: > Users.user_id]
+  order_date datetime
+  status enum('Pending','Shipped','Delivered','Returned','Cancelled')
+  payment_method enum('Cash','Card','Wallet')
+  total_amount decimal
+}
+
+Table OrderItems {
+  order_item_id int [pk]
+  order_id int [ref: > Orders.order_id]
+  product_id int [ref: > Products.product_id]
+  quantity int
+  price decimal
+}
+
+Table Payments {
+  payment_id int [pk]
+  order_id int [ref: > Orders.order_id]
+  amount decimal
+  payment_date datetime
+  status enum('Success','Failed','Refunded')
+}
+
+Table Reviews {
+  review_id int [pk]
+  product_id int [ref: > Products.product_id]
+  user_id int [ref: > Users.user_id]
+  rating int
+  comment text
+  review_date datetime
+}
+
+Table Cart {
+  cart_id int [pk]
+  user_id int [ref: > Users.user_id]
+  created_at datetime
+}
+
+Table CartItems {
+  cart_item_id int [pk]
+  cart_id int [ref: > Cart.cart_id]
+  product_id int [ref: > Products.product_id]
+  quantity int
+}
+
+Table Coupons {
+  coupon_id int [pk]
+  code varchar
+  discount_percent int
+  expiry_date date
+}
+
+Table CouponUsage {
+  usage_id int [pk]
+  coupon_id int [ref: > Coupons.coupon_id]
+  user_id int [ref: > Users.user_id]
+  order_id int [ref: > Orders.order_id]
+  used_on datetime
+}
+
+Table Inventory_Audit {
+  audit_id int [pk]
+  product_id int [ref: > Products.product_id]
+  action varchar
+  quantity_changed int
+  action_date datetime
+  user_id int [ref: > Users.user_id]
+}
