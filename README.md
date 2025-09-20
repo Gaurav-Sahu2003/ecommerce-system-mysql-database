@@ -34,7 +34,7 @@ Ideal for portfolios, resumes, and interviews.
 ---
 
 ## 📂 Project Structure
-
+```
 ecommerce-system-mysql-database/
 │
 ├── README.md
@@ -49,7 +49,7 @@ ecommerce-system-mysql-database/
    ├── transactions.sql
    └── indexes.sql
  
-    
+```    
 
 ## 🗄️ Database Schema
 ER Diagram:  
