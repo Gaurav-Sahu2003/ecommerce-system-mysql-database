@@ -39,15 +39,15 @@ ecommerce-system-mysql-database/
 │
 ├── README.md
 ├── schema/
-│   ├── ecommerce_schema.dbml
-│   └── erd_diagram.png
-└──  sql/
-   ├── ecommerce_schema.sql
-   ├── sample_data.sql
-   ├── procedures_triggers.sql
-   ├── views.sql
-   ├── transactions.sql
-   └── indexes.sql
+│    ├── ecommerce_schema.dbml
+│    └── erd_diagram.png
+└── sql/
+     ├── ecommerce_schema.sql
+     ├── sample_data.sql
+     ├── procedures_triggers.sql
+     ├── views.sql
+     ├── transactions.sql
+     └── indexes.sql
  
 ```    
 
